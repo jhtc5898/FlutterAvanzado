@@ -24,6 +24,10 @@ class PlatziTripsCupertino extends StatelessWidget {
                   icon: Icon(Icons.person, color: Colors.indigo),
                   title: Text("")
               ),
+               BottomNavigationBarItem(
+                  icon: Icon(Icons.menu, color: Colors.indigo),
+                  title: Text("")
+              ),
             ]
         ),
 
@@ -44,12 +48,16 @@ class PlatziTripsCupertino extends StatelessWidget {
                 builder: (BuildContext context) => ProfileTrips(),
               );
               break;
-
+            case 3:
+              return CupertinoTabView(
+                builder: (BuildContext context) => ProfileTrips(),
+              );
+              break;
           }
 
         },
       ),
-    );
+    ); 
   }
 
 }

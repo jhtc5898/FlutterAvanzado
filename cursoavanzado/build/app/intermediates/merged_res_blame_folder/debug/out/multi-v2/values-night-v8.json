@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/john/Documentos/ProyectosFlutter/Platzi/cursoavanzado/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/home/john/Documentos/GitHub/FlutterAvanzado/cursoavanzado/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/john/Documentos/ProyectosFlutter/Platzi/cursoavanzado/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/home/john/Documentos/GitHub/FlutterAvanzado/cursoavanzado/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
