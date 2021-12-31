@@ -19,7 +19,23 @@ class _LoginState extends State<Login> {
     userBloc = BlocProvider.of(context);
     //Retornamos el widget de gradiente
 
-    return signinGoogleUI();
+    return _handleCurrentSession();
+  }
+
+  Widget _handleCurrentSession() {
+    return StreamBuilder(
+      stream: userBloc.authStatus,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        //Si el snapshot tiene datos
+        if(!snapshot.hasData || snapshot.hasError){
+          return signinGoogleUI();
+        } else {
+          print("Data"+snapshot.data.toString());
+          print(userBloc.authStatus.toString());
+          return PlatziTripsCupertino();
+        }
+      },
+    );
   }
 
   Widget signinGoogleUI() {
@@ -54,7 +70,8 @@ class _LoginState extends State<Login> {
                 ButtonGreen(
                     text: "LOGIN CON GOOGLE",
                     onPressed: () {
-                      userBloc.signIn().then((User user)=> print("El usuario es: ${user.toString()}"));
+                      userBloc.signIn().then((User user) =>
+                          print("El usuario es: ${user.toString()}"));
                     },
                     width: 300.0,
                     height: 50.0),

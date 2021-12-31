@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
 import 'Place/Ui/screens/home_trips.dart';
 import 'Place/Ui/screens/search_trips.dart';
 import 'User/Ui/screens/profile_trips.dart';
@@ -10,27 +12,14 @@ class PlatziTripsCupertino extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       bottomNavigationBar: CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home, color: Colors.indigo),
-                  title: Text("")
-              ),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search, color: Colors.indigo),
-                  title: Text("")
-              ),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.indigo),
-                  title: Text("")
-              ),
-               BottomNavigationBarItem(
-                  icon: Icon(Icons.menu, color: Colors.indigo),
-                  title: Text("")
-              ),
-            ]
-        ),
-
+        tabBar: CupertinoTabBar(items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home, color: Colors.indigo), title: Text("")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search, color: Colors.indigo), title: Text("")),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person, color: Colors.indigo), title: Text(""))
+        ]),
         tabBuilder: (BuildContext context, int index) {
           switch (index) {
             case 0:
@@ -45,19 +34,20 @@ class PlatziTripsCupertino extends StatelessWidget {
               break;
             case 2:
               return CupertinoTabView(
-                builder: (BuildContext context) => ProfileTrips(),
+                builder: (BuildContext context) {
+                  return BlocProvider<UserBloc>(
+                      child: ProfileTrips(), bloc: UserBloc());
+                },
               );
               break;
-            case 3:
+              default: {
               return CupertinoTabView(
-                builder: (BuildContext context) => ProfileTrips(),
-              );
+                  builder: (BuildContext context) => HomeTrips() );
+            }
               break;
           }
-
         },
       ),
-    ); 
+    );
   }
-
 }

@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,14 +19,18 @@ class FirebaseAuthApi {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-    
-    final User user = (await _firebaseAuth.signInWithCredential(credential)).user;
+
+    final User user =
+        (await _firebaseAuth.signInWithCredential(credential)).user;
     print("signed in " + user.displayName);
     return user;
   }
 
-  void signOutGoogle() async {
-    await _googleSignIn.signOut();
-    print("User Sign Out");
+  signOutGoogle() async {
+    await _firebaseAuth.signOut().then(((onValue) => print("Cerro")));
+    _googleSignIn.signOut();
+    print("User Sign dddds");
   }
-} 
+
+  
+}
