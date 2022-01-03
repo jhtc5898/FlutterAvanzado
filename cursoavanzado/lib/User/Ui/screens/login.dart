@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:platzi_trips_app/User/bloc/bloc_user.dart';
+import 'package:platzi_trips_app/User/model/user.dart';
 import 'package:platzi_trips_app/widgets/gradient_back.dart';
 import '../../../platzi_trips_cupertino.dart';
 import 'package:platzi_trips_app/widgets/button_green.dart';
@@ -42,7 +43,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          GradientBack("Weconnect", null),
+          GradientBack(height: 300,),
           Container(
             alignment: Alignment.topCenter,
             child: Column(
@@ -70,8 +71,15 @@ class _LoginState extends State<Login> {
                 ButtonGreen(
                     text: "LOGIN CON GOOGLE",
                     onPressed: () {
-                      userBloc.signIn().then((User user) =>
-                          print("El usuario es: ${user.toString()}"));
+                      userBloc.signIn().then((User user) 
+                      {
+                        userBloc.updateUserDataFireStore(
+                          Users(
+                            uid:user.uid.toString(),
+                            name: user.displayName.toString(),
+                            email: user.email.toString(),
+                            imageUrl: user.photoURL.toString()));
+                      });
                     },
                     width: 300.0,
                     height: 50.0),

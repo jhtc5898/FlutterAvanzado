@@ -41,7 +41,7 @@ class ProfileHeader extends StatelessWidget {
       child: Column(
         children: <Widget>[
           UserInfo(snapshot.data.photoURL.toString(),snapshot.data.displayName.toString(),snapshot.data.email.toString()),
-          ButtonBar()
+          ButtonsBar()
         ],
       ),
     );

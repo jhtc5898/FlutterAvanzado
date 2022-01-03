@@ -9,7 +9,7 @@ class HeaderAppBar extends StatelessWidget {
     return Stack(
       children: <Widget>[
         //No se puede poner null para que agarre el tamaño del contenedor
-        GradientBack("Bienvenido",250.0),
+        GradientBack(height: 250.0),
         CardImageList()
       ],
     );
